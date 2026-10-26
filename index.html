@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11111b">
+  <title>Chat UI — AI for Code</title>
+  <link rel="icon" href="assets/saved-image-file_00000000f2d081fa809fb7b06e9b2352.jpg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <img src="logo.svg" alt="Chat UI logo">
+        <span>Chat UI</span>
+        <button class="icon-button mobile-close" id="closeSidebar" aria-label="Close sidebar">×</button>
+      </div>
+
+      <button class="new-chat" id="newChat">＋ New chat</button>
+
+      <div class="side-label">YOUR CHATS</div>
+      <div id="chatHistory" class="chat-history"></div>
+
+      <div class="sidebar-bottom">
+        <div class="model-dot"></div>
+        <div>
+          <strong>Browser AI</strong>
+          <small id="modelStatus">AI loads when needed</small>
+        </div>
+        <button class="icon-button" id="settingsButton" title="Settings" aria-label="Settings">⚙</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="openSidebar" class="icon-button mobile-menu" aria-label="Open sidebar">☰</button>
+        <div class="top-title">Chat <span>UI</span></div>
+        <div class="top-actions">
+          <span class="status-pill"><i></i> <span id="connectionStatus">Ready</span></span>
+          <button id="clearChat" class="icon-button" title="Clear chat" aria-label="Clear chat">⌫</button>
+        </div>
+      </header>
+
+      <section class="conversation" id="conversation">
+        <div class="welcome" id="welcome">
+          <div class="welcome-logo">
+            <img src="assets/Chat UI Neon Gradient Logo.png" alt="">
+          </div>
+          <p class="eyebrow">YOUR CODING ASSISTANT</p>
+          <h1>Build something<br><span>amazing.</span></h1>
+          <p class="welcome-description">
+            Ask questions, write code, fix bugs, and bring your ideas to life.
+          </p>
+
+          <div class="suggestions">
+            <button class="suggestion" data-prompt="Make me a playable Snake game using HTML, CSS and JavaScript.">
+              <span>🎮</span><span><b>Make a game</b><small>Create a playable browser game</small></span><span class="arrow">↗</span>
+            </button>
+            <button class="suggestion" data-prompt="Teach me HTML and make a simple website with a beautiful design.">
+              <span>🌐</span><span><b>Build a website</b><small>Create a modern web page</small></span><span class="arrow">↗</span>
+            </button>
+            <button class="suggestion" data-prompt="Write a JavaScript calculator and explain how it works.">
+              <span>⌨️</span><span><b>Write some code</b><small>Build something from scratch</small></span><span class="arrow">↗</span>
+            </button>
+            <button class="suggestion" data-prompt="Explain how to fix a JavaScript error in beginner-friendly steps.">
+              <span>🛠️</span><span><b>Fix a bug</b><small>Debug code step by step</small></span><span class="arrow">↗</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <div id="typingIndicator" class="typing-indicator" hidden>
+          <span></span><span></span><span></span>
+          <small>Chat UI is thinking...</small>
+        </div>
+      </section>
+
+      <footer class="composer-area">
+        <form id="chatForm" class="composer">
+          <textarea
+            id="messageInput"
+            placeholder="Message Chat UI..."
+            rows="1"
+            aria-label="Your message"
+            required
+          ></textarea>
+          <div class="composer-bottom">
+            <div class="composer-tools">
+              <button type="button" class="tool-button" id="codeMode">{"</>"} <span>Code mode</span></button>
+              <span class="composer-note">No API key required</span>
+            </div>
+            <button class="send-button" id="sendButton" type="submit" aria-label="Send message">
+              <span>↑</span>
+            </button>
+          </div>
+        </form>
+        <p class="disclaimer">Chat UI can make mistakes. Check generated code before running it.</p>
+      </footer>
+    </main>
+  </div>
+
+  <dialog id="settingsDialog" class="settings-dialog">
+    <div class="settings-header">
+      <h2>Settings</h2>
+      <button id="closeSettings" class="icon-button" aria-label="Close settings">×</button>
+    </div>
+    <p class="settings-description">
+      Chat UI can use a small open-source language model in your browser.
+      The first download can take a while.
+    </p>
+    <div class="setting-row">
+      <div><strong>Local browser AI</strong><small>No API key. Requires internet for the initial model download.</small></div>
+      <span class="model-tag">Qwen Coder</span>
+    </div>
+    <p id="settingsStatus" class="settings-status">The model downloads when you send your first message.</p>
+    <button id="loadModelButton" class="primary-button">Load AI model</button>
+    <button id="resetModelButton" class="secondary-button">Reset model status</button>
+  </dialog>
+</body>
+</html>
